@@ -9,7 +9,7 @@ locals {
 }
 
 resource "azurerm_data_factory" "main" {
-  name                = var.datafactory_name == "" ? lower(join("", [var.empresa,"df",var.ambiente])) : lower(join("", [var.empresa,var.datafactory_name,var.ambiente]))
+  name                = var.name == "" ? lower(join("", [var.empresa,"df",var.ambiente])) : lower(join("", [var.empresa,var.name,var.ambiente]))
   location            = var.location
   resource_group_name = var.resource_group.name
 }
