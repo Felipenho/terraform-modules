@@ -1,5 +1,9 @@
 data "azurerm_client_config" "current" {}
 
+provider "azurerm" {
+  features {}
+}
+
 locals {
   tags = {
       empresa      = var.empresa
