@@ -24,23 +24,46 @@ variable location {
     description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#location-1"
     default     = "eastus"
 }
-variable enable_vsts_configuration {
+# variable enable_vsts_configuration {
+#   type        = bool
+#   default     = false
+#   description = "Ativa a configuração VSTS"
+
+#   validation {
+#     condition     = !var.enable_vsts_configuration || (var.repository_name != "" && var.project_name != "")
+#     error_message = "Se enable_vsts_configuration for true, as variáveis repository_name e project_name devem ser fornecidas!"
+#   }
+# }
+# variable repository_name {
+#     type = string
+#     description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
+#     default = ""
+# }
+# variable project_name {
+#     type = string
+#     description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
+#     default = "Projects"
+# }
+variable "enable_vsts_configuration" {
   type        = bool
   default     = false
   description = "Ativa a configuração VSTS"
 
   validation {
-    condition     = !var.enable_vsts_configuration || (var.repository_name != "" && var.project_name != "")
-    error_message = "Se enable_vsts_configuration for true, as variáveis repository_name e project_name devem ser fornecidas!"
+    condition = (
+      !var.enable_vsts_configuration ||
+      (length(trimspace(var.repository_name)) > 0 && length(trimspace(var.project_name)) > 0)
+    )
+    error_message = "Se enable_vsts_configuration for true, 'repository_name' e 'project_name' não podem estar vazios!"
   }
 }
-variable repository_name {
-    type = string
-    description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
-    default = ""
+variable "repository_name" {
+  type        = string
+  description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
+  default     = ""
 }
-variable project_name {
-    type = string
-    description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
-    default = "Projects"
+variable "project_name" {
+  type        = string
+  description = "(Optional) Nome do projeto do Azure DevOps. Padrão: 'Projects'."
+  default     = "Projects"
 }
