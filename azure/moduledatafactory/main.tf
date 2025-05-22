@@ -24,7 +24,7 @@ resource "azurerm_data_factory" "main" {
     content {
       account_name        = "ArbitersOfAsh"
       branch_name         = "main"
-      project_name        = "Projects"
+      project_name        = var.project_name
       repository_name     = var.repository_name
       root_folder         = "/"
       tenant_id           = data.azurerm_client_config.current.tenant_id

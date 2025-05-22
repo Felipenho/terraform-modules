@@ -30,12 +30,17 @@ variable enable_vsts_configuration {
   description = "Ativa a configuração VSTS"
 
   validation {
-    condition     = !var.enable_vsts_configuration || (var.repository_name != "")
-    error_message = "Se enable_vsts_configuration for true, a variável repository_name deve ser fornecida!"
+    condition     = !var.enable_vsts_configuration || (var.repository_name != "" && var.project_name != "")
+    error_message = "Se enable_vsts_configuration for true, as variáveis repository_name e project_name devem ser fornecidas!"
   }
 }
 variable repository_name {
     type = string
     description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
     default = ""
+}
+variable project_name {
+    type = string
+    description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
+    default = "Projects"
 }
