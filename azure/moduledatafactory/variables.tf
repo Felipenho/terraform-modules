@@ -53,4 +53,8 @@ variable "tenant_id" {
   type        = string
   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#tenant_id-1"
 }
-
+variable "publishing_enabled" {
+  type        = string
+  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#publishing_enabled-1"
+  default     = "true"
+}
