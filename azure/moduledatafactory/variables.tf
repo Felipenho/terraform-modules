@@ -24,3 +24,8 @@ variable location {
     description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#location-1"
     default     = "eastus"
 }
+variable enable_vsts_configuration {
+  type        = bool
+  description = "(Optional) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#enable_vsts_configuration-1"
+  default     = true
+}
