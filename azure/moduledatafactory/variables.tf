@@ -29,32 +29,32 @@ variable enable_vsts_configuration {
   description = "(Optional) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#enable_vsts_configuration-1"
   default     = true
 }
-variable "account_name" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#account_name-1"
-}
-variable "branch_name" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#branch_name-1"
-}
-variable "project_name" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#project_name-1"
-}
-variable "repository_name" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#repository_name-1"
-}
-variable "root_folder" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#root_folder-1"
-}
-variable "tenant_id" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#tenant_id-1"
-}
-variable "publishing_enabled" {
-  type        = string
-  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#publishing_enabled-1"
-  default     = "true"
-}
+# variable "account_name" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#account_name-1"
+# }
+# variable "branch_name" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#branch_name-1"
+# }
+# variable "project_name" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#project_name-1"
+# }
+# variable "repository_name" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#repository_name-1"
+# }
+# variable "root_folder" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#root_folder-1"
+# }
+# variable "tenant_id" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#tenant_id-1"
+# }
+# variable "publishing_enabled" {
+#   type        = string
+#   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#publishing_enabled-1"
+#   default     = "true"
+# }
