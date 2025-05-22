@@ -22,12 +22,12 @@ resource "azurerm_data_factory" "main" {
   dynamic "vsts_configuration" {
     for_each = var.enable_vsts_configuration == true ? [1] : []
     content {
-      account_name        = "asddas"
-      branch_name         = "main"
-      project_name        = "DevOps"
-      repository_name     = "TRK.ADF"
-      root_folder         = "/"
-      tenant_id           = "b03d2bf8-868b-4604-a5c9-3e53df08f8d7"
+      account_name        = var.account_name
+      branch_name         = var.branch_name
+      project_name        = var.project_name
+      repository_name     = var.repository_name
+      root_folder         = var.root_folder
+      tenant_id           = var.tenant_id
       publishing_enabled  = "true"
     }
   }
