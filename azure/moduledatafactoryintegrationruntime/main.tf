@@ -14,5 +14,5 @@ locals {
 
 resource "azurerm_data_factory_integration_runtime_self_hosted" "main" {
   name            = upper("selfhosted")
-  data_factory_id = azurerm_data_factory.example.id
+  data_factory_id = azurerm_data_factory.main.id
 }
