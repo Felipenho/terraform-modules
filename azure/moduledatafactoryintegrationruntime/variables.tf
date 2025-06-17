@@ -8,6 +8,16 @@ variable ambiente {
   description = "(Required) Tipo de ambiente que está sendo criado (e.g dev, tst, hmg ou prd)"
 }
 
+## Dependências
+variable data_factory {
+  type = object({
+    name                = string
+    resource_group_name = string
+    id                  = string
+  })
+  description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory_integration_runtime_self_hosted#data_factory_id"
+}
+
 ## Terraform
 variable name {
     type = string
