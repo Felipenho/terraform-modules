@@ -14,8 +14,8 @@ locals {
 
 resource "azurerm_storage_account" "main" {
   name                          = var.name == "" ? lower(join("", [var.empresa,"stg",var.ambiente])) : lower(join("", [var.empresa,var.name,var.ambiente]))
-  resource_group_name           = azurerm_resource_group.main.name
-  location                      = azurerm_resource_group.main.location
+  resource_group_name           = var.resource_group.name
+  location                      = var.location
   https_traffic_only_enabled    = true
   access_tier                   = "Cool"
   account_kind                  = var.account_kind
