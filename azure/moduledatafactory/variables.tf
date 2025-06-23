@@ -15,6 +15,7 @@ variable resource_group {
   })
   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#resource_group_name-1"
 }
+
 ## Terraform
 variable name {
     type        = string
