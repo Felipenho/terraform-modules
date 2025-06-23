@@ -31,4 +31,7 @@ resource "azurerm_data_factory" "main" {
       publishing_enabled  = "true"
     }
   }
+  identity {
+    type = "SystemAssigned"
+  }
 }
