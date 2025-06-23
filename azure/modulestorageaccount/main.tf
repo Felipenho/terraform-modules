@@ -13,7 +13,7 @@ locals {
 }
 
 resource "azurerm_storage_account" "main" {
-  name                          = var.name == "" ? upper(join("_", [var.empresa,"RG",var.ambiente])) : upper(join("_", [var.empresa,var.name,var.ambiente]))
+  name                          = var.name == "" ? lower(join("", [var.empresa,"stg",var.ambiente])) : lower(join("", [var.empresa,var.name,var.ambiente]))
   resource_group_name           = azurerm_resource_group.main.name
   location                      = azurerm_resource_group.main.location
   https_traffic_only_enabled    = true
