@@ -35,3 +35,10 @@ resource "azurerm_data_factory" "main" {
     type = "SystemAssigned"
   }
 }
+
+resource "azurerm_role_assignment" "main" {
+   count                = var.enable_vsts_configuration == true ? 1 : 0
+   scope                = var.resource_group.name
+   role_definition_name = "Data Factory Integration Runtime Contributor"
+   principal_id         = data.azurerm_data_factory.name.identity[0].object_id
+}
