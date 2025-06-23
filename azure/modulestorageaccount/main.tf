@@ -18,12 +18,20 @@ resource "azurerm_storage_account" "main" {
   location                      = azurerm_resource_group.main.location
   https_traffic_only_enabled    = true
   access_tier                   = "Cool"
-  account_kind                  = "StorageV2"
-  account_tier                  = "Standard"
-  account_replication_type      = "LRS"
+  account_kind                  = var.account_kind
+  account_tier                  = var.account_tier
+  account_replication_type      = var.account_replication_type
   min_tls_version               = "TLS1_2"
   public_network_access_enabled = true
+
   tags      = local.tags
+
+  lifecycle {
+    prevent_destroy = true
+    # ignore_changes = [
+    #   azure_files_authentication
+    # ]
+  }
 }
 
 resource "azurerm_management_lock" "main" {
