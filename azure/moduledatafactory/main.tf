@@ -5,10 +5,12 @@ provider "azurerm" {
 }
 
 locals {
+  configuration_mode_conflict = var.enable_vsts_configuration && var.enable_github_configuration
+
   tags = {
-      empresa      = var.empresa
-      environment  = var.ambiente
-      object_id    = data.azurerm_client_config.current.object_id
+    empresa                = var.empresa
+    environment            = var.ambiente
+    object_id              = data.azurerm_client_config.current.object_id
   }
 }
 
@@ -46,5 +48,13 @@ resource "azurerm_data_factory" "main" {
 
   identity {
     type = "SystemAssigned"
+  }
+}
+
+resource "null_resource" "validate_configuration_mode" {
+  count = local.configuration_mode_conflict ? 1 : 0
+
+  provisioner "local-exec" {
+    command = ">&2 echo 'Você não pode habilitar enable_vsts_configuration e enable_github_configuration ao mesmo tempo!' && exit 1"
   }
 }
