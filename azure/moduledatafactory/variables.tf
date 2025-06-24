@@ -60,12 +60,3 @@ variable repository_name {
     description = "(Optional) Nome do repositório do Azure DevOps ou Github."
     default = ""
 }
-variable "validate_configuration_mode" {
-  description = "(Required) Validação para evitar que o bloco para repositório não conflita. Os dois não podem ser habilitados ao mesmo tempo."
-  default     = true
-
-  validation {
-    condition     = !(var.enable_vsts_configuration && var.enable_github_configuration)
-    error_message = "Apenas um dos blocos de configuração de repositório pode ser habilitado ao mesmo tempo. Habilite apenas um: enable_vsts_configuration ou enable_github_configuration."
-  }
-}
