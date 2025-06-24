@@ -13,9 +13,9 @@ locals {
 }
 
 resource "azurerm_data_factory" "main" {
-  name                = var.name == "" ? lower(join("", [var.empresa,"df",var.ambiente])) : lower(join("", [var.empresa,var.name,var.ambiente]))
-  location            = var.location
-  resource_group_name = var.resource_group.name
+  name                        = var.name == "" ? lower(join("", [var.empresa,"df",var.ambiente])) : lower(join("", [var.empresa,var.name,var.ambiente]))
+  location                    = var.location
+  resource_group_name         = var.resource_group.name
 
   tags                = local.tags
 
@@ -31,6 +31,19 @@ resource "azurerm_data_factory" "main" {
       publishing_enabled  = "true"
     }
   }
+
+  dynamic "github_configuration" {
+    for_each = var.enable_github_configuration == true ? [1] : []
+    content {
+      account_name        = "Felipenho"
+      branch_name         = "main"
+      git_url             = "https://github.com"
+      repository_name     = var.repository_name
+      root_folder         = "/"
+      publishing_enabled  = "true"
+    }
+  }
+
   identity {
     type = "SystemAssigned"
   }
