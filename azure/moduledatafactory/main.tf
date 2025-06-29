@@ -1,8 +1,8 @@
 data "azurerm_client_config" "current" {}
 
-# provider "azurerm" {
-#   features {}
-# }
+provider "azurerm" {
+  features {}
+}
 
 locals {
   configuration_mode_conflict = var.enable_vsts_configuration && var.enable_github_configuration
@@ -19,7 +19,7 @@ resource "azurerm_data_factory" "main" {
   location                    = var.location
   resource_group_name         = var.resource_group.name
 
-  tags                = local.tags
+  tags                        = local.tags
 
   dynamic "vsts_configuration" {
     for_each = var.enable_vsts_configuration == true ? [1] : []
