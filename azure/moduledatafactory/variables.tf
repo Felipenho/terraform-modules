@@ -15,6 +15,7 @@ variable resource_group {
   })
   description = "(Required) https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/data_factory#resource_group_name-1"
 }
+
 ## Terraform
 variable name {
     type        = string
@@ -34,13 +35,28 @@ variable enable_vsts_configuration {
     error_message = "Se enable_vsts_configuration for true, as variáveis repository_name e project_name devem ser fornecidas!"
   }
 }
-variable repository_name {
+variable enable_github_configuration {
+  type        = bool
+  default     = false
+  description = "Ativa a configuração Github"
+
+  validation {
+    condition     = !var.enable_github_configuration || (var.repository_name != "" && var.account_name != "")
+    error_message = "Se enable_github_configuration for true, as variáveis repository_name e account_name devem ser fornecidas!"
+  }
+}
+variable account_name {
     type = string
-    description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
-    default = ""
+    description = "(Optional) Nome da Conta do Github."
+    default = "Felipenho"
 }
 variable project_name {
     type = string
-    description = "(Optional) Nome do repositório do Azure DevOps, que pertence ao projeto."
+    description = "(Optional) Nome do projeto do Azure DevOps, que pertence ao projeto."
     default = "Projects"
+}
+variable repository_name {
+    type = string
+    description = "(Optional) Nome do repositório do Azure DevOps ou Github."
+    default = ""
 }
